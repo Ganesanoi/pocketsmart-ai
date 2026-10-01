@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="hero">
+  <h1>PocketSmart</h1>
+  <h2>AI-Powered Budget Planning for Everyday Needs</h2>
+  <p>Make smarter decisions with personalised budget recommendations for home interiors, parties and jewelry. Our AI helps you get the most value for your money.</p>
+  <a class="btn light" href="{{ '/dashboard' if user else '/register' }}">Get Started</a>
+  <a class="btn" style="background:#ffffff33" href="#features">Learn More</a>
+</header>
+<section class="section" id="features">
+  <h2 class="title">Our Smart Budget Planners</h2>
+  <p class="subtitle">Discover how PocketSmart helps you make better financial decisions across different areas of your life.</p>
+  <div class="grid">
+    <div class="card"><div class="top">🏠</div><div class="body"><h3>Home Interior Budget Planner</h3>
+      <p>Tell us your budget, rooms and quantities of lights, fans, tables and more. Get cost-effective picks from IKEA, Amazon and Flipkart.</p>
+      <a class="btn small" href="/home-planner">Plan my home</a></div></div>
+    <div class="card"><div class="top">🥂</div><div class="body"><h3>Party Budget Planner</h3>
+      <p>Split your budget across catering, decoration, entertainment and venue, with options from Swiggy, Zomato and OYO.</p>
+      <a class="btn small" href="/party-planner">Plan my party</a></div></div>
+    <div class="card"><div class="top">💎</div><div class="body"><h3>Jewelry Budget Planner</h3>
+      <p>Pick the occasion and style, optionally upload your outfit, and get matching jewelry that fits your budget.</p>
+      <a class="btn small" href="/jewelry-planner">Find jewelry</a></div></div>
+  </div>
+</section>
+<section class="section" id="testimonials">
+  <h2 class="title">What Users Say</h2>
+  <p class="subtitle">Sample testimonials for demonstration purposes.</p>
+  <div class="grid">
+    <div class="card"><div class="body testi">“Furnished my whole flat under budget in one evening.”<footer>Priya, Chennai</footer></div></div>
+    <div class="card"><div class="body testi">“The party split between catering and decor was spot on.”<footer>Arun, Coimbatore</footer></div></div>
+    <div class="card"><div class="body testi">“Uploading my saree photo got me perfectly matching earrings.”<footer>Meena, Madurai</footer></div></div>
+  </div>
+</section>
+{% endblock %}

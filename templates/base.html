@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}PocketSmart AI{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="/">PocketSmart</a>
+  <div class="links">
+    {% if user %}
+      <a href="/dashboard">Dashboard</a><a href="/home-planner">Home</a><a href="/party-planner">Party</a>
+      <a href="/jewelry-planner">Jewelry</a><a href="/history">History</a>
+      <a class="btn small" href="/logout">Logout ({{ user.username }})</a>
+    {% else %}
+      <a href="/#features">Features</a><a href="/#testimonials">Testimonials</a><a href="/login">Sign In</a>
+      <a class="btn small" href="/register">Get Started</a>
+    {% endif %}
+  </div>
+</nav>
+{% block content %}{% endblock %}
+<footer class="site">
+  <div>&copy; PocketSmart AI &middot; Budget-aware recommendations powered by Google Gemini</div>
+  <div style="margin-top:.4rem;opacity:.8">Prices are AI estimates in INR and may differ on the platform. Always verify before buying.</div>
+</footer>
+</body>
+</html>

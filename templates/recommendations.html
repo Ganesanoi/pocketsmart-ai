@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}{{ category }} Recommendations - PocketSmart AI{% endblock %}
+{% block content %}
+<div class="narrow" style="max-width:900px"><div class="panel">
+  <h1>{{ {"Home":"🏠","Party":"🥂","Jewelry":"💎"}[category] }} {{ category }} recommendations</h1>
+  {% if result.source == "fallback" %}
+  <div class="alert info">These picks come from our built-in catalog because the AI service was unavailable or returned nothing usable.</div>{% endif %}
+  {% if result.summary %}<p>{{ result.summary }}</p>{% endif %}
+  <p>{% for k, v in inputs.items() %}<span class="tag">{{ k }}: {{ v }}</span> {% endfor %}</p>
+  {% if result.image %}<img class="outfit" src="{{ url_for('static', path='uploads/' ~ result.image) }}" alt="Your outfit">{% endif %}
+
+  {% set pct = ((result.total / budget) * 100)|round|int if budget else 0 %}
+  <div style="display:flex;justify-content:space-between;flex-wrap:wrap">
+    <span><b>Budget:</b> Rs.{{ "{:,.0f}".format(budget) }}</span>
+    <span><b>Planned:</b> Rs.{{ "{:,.0f}".format(result.total) }}</span>
+    <span><b>Left over:</b> Rs.{{ "{:,.0f}".format(result.remaining) }}</span></div>
+  <div class="bar"><i style="width:{{ [pct, 100]|min }}%"></i></div>
+
+  {% if result.allocation %}
+  <h3>Suggested split</h3>
+  <div class="checks">{% for k, v in result.allocation.items() %}<span class="tag">{{ k|title }}: Rs.{{ "{:,.0f}".format(v|float) }}</span>{% endfor %}</div>{% endif %}
+
+  <h3>Items</h3>
+  {% for i in result["items"] %}
+  <div class="rec">
+    <div><b>{{ i.name }}</b><br><span class="tag">{{ i.category }}</span> <span class="tag plat">{{ i.platform }}</span><br>
+      <small>{{ i.reason }}</small><br><a href="{{ i.url }}" target="_blank" rel="noopener noreferrer">Search on {{ i.platform }} &rarr;</a></div>
+    <div class="price">Rs.{{ "{:,.0f}".format(i.estimated_price * i.quantity) }}
+      {% if i.quantity > 1 %}<br><small>{{ i.quantity }} x Rs.{{ "{:,.0f}".format(i.estimated_price) }}</small>{% endif %}</div>
+  </div>
+  {% else %}<p>No items fit this budget. Try increasing it.</p>{% endfor %}
+
+  {% if result.tips %}<h3>Money-saving tips</h3><ul>{% for t in result.tips %}<li>{{ t }}</li>{% endfor %}</ul>{% endif %}
+  <a class="btn light" href="/{{ category|lower }}-planner">Plan again</a>
+  <a class="btn" href="/history">View history</a>
+</div></div>
+{% endblock %}

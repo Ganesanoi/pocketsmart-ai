@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Jewelry Planner - PocketSmart AI{% endblock %}
+{% block content %}
+<div class="narrow"><div class="panel">
+  <h1>💎 Jewelry Budget Planner</h1>
+  {% if error %}<div class="alert err">{{ error }}</div>{% endif %}
+  <form method="post" action="/generate-jewelry" enctype="multipart/form-data">
+    <label for="budget">Budget (Rs.)</label><input id="budget" name="budget" type="number" min="500" step="100" required placeholder="e.g. 5000">
+    <div class="row">
+      <div><label for="occasion">Occasion</label><select id="occasion" name="occasion">
+        <option value="wedding">Wedding</option><option value="party">Party</option><option value="office">Office</option>
+        <option value="festival">Festival</option><option value="casual">Casual</option></select></div>
+      <div><label for="style">Style</label><select id="style" name="style">
+        <option value="traditional">Traditional</option><option value="modern">Modern</option><option value="minimal">Minimal</option>
+        <option value="classic">Classic</option><option value="boho">Boho</option></select></div>
+      <div><label for="metal">Metal tone</label><select id="metal" name="metal">
+        <option value="any">Any</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="rose gold">Rose gold</option></select></div>
+    </div>
+    <label for="outfit">Outfit photo (optional, JPG/PNG/WEBP, max 5 MB)</label>
+    <input id="outfit" name="outfit" type="file" accept="image/jpeg,image/png,image/webp">
+    <button class="btn submit" type="submit">Find matching jewelry</button>
+  </form>
+</div></div>
+{% endblock %}

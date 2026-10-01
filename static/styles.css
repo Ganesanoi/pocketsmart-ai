@@ -1,0 +1,48 @@
+:root{--navy:#12294d;--blue:#3a6ea5;--amber:#f59e0b;--bg:#f4f6fa;--text:#1d2b45;--muted:#5b6780;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:var(--blue)}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;padding:1rem 2rem;background:var(--navy);position:sticky;top:0;z-index:10}
+.nav .logo{color:#fff;font-size:1.5rem;font-weight:700;text-decoration:none}
+.nav .links{display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem}
+.nav .links a{color:#fff;text-decoration:none;font-weight:600;font-size:.95rem}
+.btn{display:inline-block;border:0;cursor:pointer;padding:.7rem 1.5rem;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--blue),var(--navy))}
+.btn:hover{filter:brightness(1.12)}
+.btn.light{background:#e8edf5;color:var(--navy)}
+.btn.small{padding:.4rem 1rem;font-size:.85rem}
+.hero{background:linear-gradient(135deg,var(--blue),var(--navy));color:#fff;text-align:center;padding:5rem 1.5rem}
+.hero h1{font-size:3rem;margin:0 0 .5rem}.hero h2{font-weight:500;margin:0 0 1rem}
+.hero p{max-width:640px;margin:0 auto 2rem;opacity:.92}.hero .btn{margin:.25rem}
+.section{max-width:1150px;margin:0 auto;padding:3.5rem 1.5rem}
+.section h2.title{text-align:center;color:var(--navy);margin:0}
+.section h2.title::after{content:"";display:block;width:64px;height:3px;background:var(--amber);margin:.6rem auto 1rem}
+.subtitle{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 2rem}
+.grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.card{background:var(--card);border-radius:14px;box-shadow:0 4px 18px rgba(18,41,77,.08);overflow:hidden}
+.card .top{background:linear-gradient(90deg,var(--blue),var(--navy));font-size:2.5rem;text-align:center;padding:1rem}
+.card .body{padding:1.25rem 1.5rem 1.5rem}.card h3{margin:.2rem 0 .5rem;color:var(--navy)}.card p{color:var(--muted);font-size:.95rem}
+.narrow{max-width:760px;margin:2.5rem auto;padding:0 1.25rem}
+.panel{background:var(--card);border-radius:14px;box-shadow:0 4px 18px rgba(18,41,77,.08);padding:2rem}
+.panel h1{margin-top:0;color:var(--navy)}
+label{display:block;font-weight:600;margin:1rem 0 .3rem;font-size:.92rem}
+input,select{width:100%;padding:.65rem .8rem;border:1px solid #ccd4e2;border-radius:8px;font:inherit}
+input:focus,select:focus{outline:2px solid var(--blue);border-color:transparent}
+.row{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.checks{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem}.checks label{display:flex;align-items:center;gap:.4rem;margin:.2rem 0;font-weight:500}
+.checks input{width:auto}
+.alert{padding:.8rem 1rem;border-radius:8px;margin-bottom:1rem;font-weight:500}
+.alert.err{background:#fee2e2;color:#991b1b}.alert.ok{background:#dcfce7;color:#166534}.alert.info{background:#e0ecff;color:#1e3a6e}
+.submit{margin-top:1.5rem;width:100%}
+.stats{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-bottom:2rem}
+.stat{background:var(--card);border-radius:12px;padding:1.2rem;text-align:center;box-shadow:0 4px 18px rgba(18,41,77,.08)}
+.stat b{display:block;font-size:1.8rem;color:var(--navy)}.stat span{color:var(--muted);font-size:.9rem}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:.7rem .6rem;border-bottom:1px solid #e5eaf3}th{color:var(--muted);font-size:.85rem;text-transform:uppercase}
+.tag{display:inline-block;padding:.1rem .6rem;border-radius:999px;background:#e0ecff;color:var(--navy);font-size:.8rem;font-weight:600}
+.tag.plat{background:#fff3d6;color:#8a5a00}
+.bar{height:10px;border-radius:99px;background:#e5eaf3;overflow:hidden;margin:.25rem 0 .8rem}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--amber))}
+.rec{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem 0;border-bottom:1px solid #e5eaf3}
+.rec:last-child{border:0}.rec .price{font-weight:700;color:var(--navy);white-space:nowrap;text-align:right}.rec small{color:var(--muted)}
+.outfit{max-width:220px;border-radius:10px;margin:.5rem 0}
+.testi{font-style:italic}.testi footer{margin-top:.6rem;font-style:normal;font-weight:600;color:var(--navy)}
+footer.site{background:var(--navy);color:#c9d4e8;text-align:center;padding:2rem 1rem;margin-top:3rem;font-size:.9rem}
+@media(max-width:600px){.hero h1{font-size:2.2rem}.nav{padding:.8rem 1rem}}

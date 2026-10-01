@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}History - PocketSmart AI{% endblock %}
+{% block content %}
+<div class="section"><div class="panel"><h1>Recommendation history</h1>
+{% if items %}
+  <table><tr><th>#</th><th>Category</th><th>Budget</th><th>Planned</th><th>Date (UTC)</th><th></th></tr>
+  {% for r in items %}<tr><td>{{ r.id }}</td><td><span class="tag">{{ r.category }}</span></td><td>Rs.{{ "{:,.0f}".format(r.budget) }}</td>
+    <td>Rs.{{ "{:,.0f}".format(r.total) }}</td><td>{{ r.created_at }}</td><td><a href="/recommendations-details/{{ r.id }}">Open</a></td></tr>{% endfor %}
+  </table>
+{% else %}<p>Nothing here yet. Generate a plan and it will be saved automatically.</p>{% endif %}
+</div></div>
+{% endblock %}

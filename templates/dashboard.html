@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - PocketSmart AI{% endblock %}
+{% block content %}
+<div class="section">
+  <h1 style="color:var(--navy)">Hello, {{ user.username }} 👋</h1>
+  <div class="stats">
+    <div class="stat"><b>{{ count }}</b><span>Plans generated</span></div>
+    <div class="stat"><b>Rs.{{ "{:,.0f}".format(budget_total) }}</b><span>Total budget planned</span></div>
+  </div>
+  <div class="grid" style="margin-bottom:2rem">
+    <a class="btn" href="/home-planner">🏠 Home Planner</a>
+    <a class="btn" href="/party-planner">🥂 Party Planner</a>
+    <a class="btn" href="/jewelry-planner">💎 Jewelry Planner</a>
+  </div>
+  <div class="panel"><h2 style="margin-top:0;color:var(--navy)">Recent recommendations</h2>
+  {% if recent %}
+    <table><tr><th>Category</th><th>Budget</th><th>Planned</th><th>Date (UTC)</th><th></th></tr>
+    {% for r in recent %}<tr><td><span class="tag">{{ r.category }}</span></td><td>Rs.{{ "{:,.0f}".format(r.budget) }}</td>
+      <td>Rs.{{ "{:,.0f}".format(r.total) }}</td><td>{{ r.created_at }}</td><td><a href="/recommendations-details/{{ r.id }}">View</a></td></tr>{% endfor %}
+    </table>
+  {% else %}<p>No plans yet - pick a planner above to get started.</p>{% endif %}</div>
+</div>
+{% endblock %}
